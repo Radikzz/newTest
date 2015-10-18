@@ -13,6 +13,16 @@
                 "element": {"#": "main"}
             }
         },
+        "actionEventListener": {
+            "prototype": "montage/core/event/action-event-listener",
+            "properties": {
+                "action": "addContent",
+                "handler": {"@": "rangeController"}
+            },
+            "_dev": {
+                "isHidden": true
+            }
+        },
         "button": {
             "prototype": "montage/ui/button.reel",
             "properties": {
@@ -31,6 +41,11 @@
                     "type": "action",
                     "useCapture": true,
                     "listener": {"@": "rangeController"}
+                },
+                {
+                    "type": "action",
+                    "useCapture": true,
+                    "listener": {"@": "actionEventListener"}
                 }
             ]
         },
@@ -41,13 +56,20 @@
                 "content": [
                     ""
                 ],
+                "contentController": {"@": "rangeController"},
                 "contenteditable": "true",
                 "dir": "ltr",
-                "draggable": "true"
+                "draggable": "true",
+                "formenctype": "application/x-www-form-urlencoded",
+                "formmethod": "get",
+                "type": "button"
             }
         },
         "rangeController": {
-            "prototype": "montage/core/range-controller"
+            "prototype": "montage/core/range-controller",
+            "properties": {
+                "draggable": "true"
+            }
         },
         "title": {
             "prototype": "digit/ui/title.reel",
